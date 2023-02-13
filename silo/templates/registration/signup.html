@@ -1,0 +1,161 @@
+{% extends 'registration/base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+	  <div class="col-md-6 mt-4">
+		<img src="../../../static/images/hello-i-m-nik-z1d-LP8sjuI-unsplash.jpg" alt="" height="600" width="400">
+	  </div>
+	  <div class="col-md-6" style="padding-top: 3%;">
+		{% if form.errors %}
+		  <p> Some Information Might be Incorrect </p>
+		{% endif %}
+		<div class="card mt-1">
+		  <div class="card-body">
+			{{rgf.errors }}
+			<h5 class="text-center"><cite>Sign up to see photos and videos from your friends</cite></h5>
+			<form action="" method="post">
+			  {% csrf_token %}
+			  <div class="form-group info">
+				<div class=" form-floating mb-3 info">
+				  {{ rgf.first_name }}
+				  <label for="floatingInput">First Name</label>
+				</div>
+				<div class="form-floating mb-3 info">
+				  {{ rgf.last_name }}
+				  <label for="floatingInput">Last Name</label>
+				</div>
+				<div class="form-floating mb-3 info">
+				  {{ rgf.username }}
+				  <label for="floatingInput">Username</label>
+				</div>
+				<div class="form-floating mb-3 info">
+				  {{ rgf.email }}
+				  <label for="floatingInput">Email Address</label>
+				</div>
+				<div class="form-control mb-3 info">
+				  {{ rgf.password1 }}
+				  <label for="floatingInput">Password</label>
+				</div>
+				<div class="form-control mb-3 info">
+				  {{ rgf.password2 }}
+				  <label for="floatingInput">Confirm Password</label>
+				</div>
+			  </div>
+			  <div class=" d-grid gap-1">
+				<button class="btn btn-primary" type="submit">Sign Up</button>
+			  </div> 
+			<input type="hidden" name="next" value="{{next}}">
+			</form>
+		  </div>
+		  <div class="card-footer">
+			<p>Already have an account?
+			  <a href="/login">Login</a>
+			</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+{% endblock %}
+
+<!-- <h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button>Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created with <i class="fa fa-heart"></i> by
+		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+		- Read how I created this and how you can join the challenge
+		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+	</p>
+</footer> -->
+
+
+<!-- Parallax design for sign up and login  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<div class="form-floating mb-3">
+						<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+						<label for="floatingInput">Email address</label>
+					  </div>
+					  <div class="form-floating">
+						<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+						<label for="floatingPassword">Password</label>
+					  </div>
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>
