@@ -1,1 +1,1 @@
-web: gunicorn auth.wsgi --log-file -
+web: python manage.py migrate && python manage.py collectstatic && gunicorn auth.wsgi
