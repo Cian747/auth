@@ -11,10 +11,12 @@ urlpatterns = [
     # path('logout/',views.logout_user,name='logout'),
     path('register/',views.register, name='register'),
     path('',views.login_user,name='login'),
-    path('home/',views.home,name='home')
+    path('home/',views.home,name='home'),
     # path('post-message/',views.post_message,name='post_message'),
     # path('profile/<int:id>',views.my_profile,name='profile'),
     # path('search_business/',views.search_for_business,name='search_business'),
+    path("password_reset/", views.password_reset_request, name="password_reset")
+
 
 ]
 if settings.DEBUG:

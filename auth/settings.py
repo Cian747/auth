@@ -38,13 +38,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'silo',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'silo'
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,42 +80,42 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'auth.wsgi.application'
 
+crispy_template_pack ='uni_form'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE':'django.db.backends.postgresql',
-        'NAME':'silo',
-        'USER':'cyan',
-        'PASSWORD':'ms254'
-    }
-}
-
-# if config('MODE')=="dev":
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': config('DB_NAME'),
-#             'USER': config('DB_USER'),
-#             'PASSWORD': config('DB_PASSWORD'),
-#             'HOST': config('DB_HOST'),
-#             'PORT': ''
-#         }
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.postgresql',
+#         'NAME':'silo',
+#         'USER':'cyan',
+#         'PASSWORD':'ms254'
 #     }
-# else:
-#    DATABASES = {
-#        'default': dj_database_url.config(
-#            default=config('DATABASE_URL')
-#        )
-#    }
+# }
 
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+if config('MODE')=="dev":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': ''
+        }
+    }
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL') # type: ignore
+       )
+   }
 
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -133,6 +134,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = 'django_ses.SESBackend'
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

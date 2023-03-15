@@ -3,15 +3,11 @@
 {% block content %}
 
 <div class="container">
-	<div class="row">
-	  <div class="col-md-5 mt-4">
-		<img src="" alt="" height="600" width="400">
-	  </div>
-	  <div class="col-md-7" style="padding-top: 3%;">
+	
 		{% if form.errors %}
 		  <p> Some Information Might be Incorrect </p>
 		{% endif %}
-		<div class="card mt-1">
+		<div class="card" style="width: 24rem;">
 		  <div class="card-body">
 			{{rgf.errors }}
 			<h5 class="text-center"><cite>Sign up to see photos and videos from your friends</cite></h5>
@@ -56,7 +52,6 @@
 		  </div>
 		</div>
 	  </div>
-	</div>
   </div>
 
 

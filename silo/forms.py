@@ -15,6 +15,6 @@ class CoachRegistrationForm(UserCreationForm):
             'last_name':forms.TextInput(attrs = {'class':'form-control names', 'placeholder':"Second Name", 'label': 'Second Name'}),
             'email':forms.TextInput(attrs = {'class':'form-control names', 'placeholder':"Email Address", 'label': 'Email Address'}),
             'username':forms.TextInput(attrs = {'class':'form-control names', 'placeholder':"Username", 'label': 'Username'}),
-            'password1':forms.PasswordInput(attrs = {'class':'form-control ','type':'password', 'placeholder':"Password", 'label': 'Password'}),
-            'password2':forms.PasswordInput(attrs = {'class':'form-control', 'placeholder':"Confirm Password", 'label': 'Confirm Password'}),
+            'password1':forms.PasswordInput(attrs = {'class':'form-control form-input','type':'password', 'placeholder':"Password", 'label': 'Password'}),
+            'password2':forms.PasswordInput(attrs = {'class':'form-control form-input', 'placeholder':"Confirm Password", 'label': 'Confirm Password'}),
         }
