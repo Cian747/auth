@@ -31,7 +31,7 @@ MODE = config("MODE",default="dev")
 SECRET_KEY=config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,7 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'auth.wsgi.application'
 
-crispy_template_pack ='uni_form'
+# crispy_template_pack ='uni_form'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -109,13 +109,11 @@ if config('MODE')=="dev":
     }
 else:
    DATABASES = {
-       'default': dj_database_url.config(
-           default=config('DATABASE_URL') # type: ignore
-       )
+       'default': dj_database_url.parse(os.environ.get("DATABASE_URL")) # type: ignore
    }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Password validation
